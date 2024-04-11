@@ -1,5 +1,5 @@
 // API URLs
-const movieUrl = "https://flatadango.onrender.com/films";
+const movieUrl = "http://localhost:3000/films";
 const ticketUrl = "https://flatadango.onrender.com/tickets";
 
 
@@ -127,7 +127,11 @@ const displayMovieDetails  = (movie) => {
   document.getElementById("film-info").textContent = description;
   document.getElementById("runtime").textContent = `${runtime} minutes`;
   document.getElementById("showtime").textContent = `${showtime}`;
-  document.getElementById("ticket-num").textContent = `${availableTickets}`;
+  if (availableTickets > 0) {
+    document.getElementById("ticket-num").textContent = `${availableTickets}`;
+} else {
+    document.getElementById("ticket-num").textContent = "0";
+}
 };
 
 
@@ -183,6 +187,15 @@ const handleBuyMovieTickets = (e) => {
         if (getMovie.capacity - updatedTicketsSold < 0) {
           // Update the button text to "Sold Out"
           buyMovieTickets.textContent = "Sold Out";
+
+          fetch(`${movieUrl}/${getMovie.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+           
+            body: JSON.stringify({ tickets_sold: "sold out" }),
+          })
 
           // Adding 'sold-out' class
           const filmItems = document.querySelectorAll('.film.item');
