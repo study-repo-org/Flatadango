@@ -107,7 +107,7 @@ const displayFirstMovieDetails = () => {
 };
 
 
-;
+
 
 
 // Function to fetch movie details and display them
