@@ -141,6 +141,16 @@ const handleMovieItemClick = (event) => {
 
 // Function to handle buying movie tickets
 // Function to handle buying movie tickets
+// Function to fetch movie details by ID
+const fetchMovieById = (movieId) => {
+  return fetch(`${movieUrl}/${movieId}`)
+    .then((res) => res.json())
+    .catch((error) => {
+      console.error(`Error fetching movie with ID ${movieId}:`, error);
+    });
+};
+
+// Function to handle buying movie tickets
 const handleBuyMovieTickets = (e) => {
   e.preventDefault();
   const movieTitleElement = document.getElementById("title");
@@ -185,6 +195,15 @@ const handleBuyMovieTickets = (e) => {
           if (availableTickets === 0) {
             buyMovieTickets.textContent = "Sold Out";
           }
+
+          // Fetch and display updated movie details by ID
+          fetchMovieById(getMovie.id)
+            .then((updatedMovie) => {
+              displayMovieDetails(updatedMovie);
+            })
+            .catch((error) => {
+              console.error("Error fetching updated movie details:", error);
+            });
         })
         .catch((error) => {
           console.error("Error updating movie details:", error);
@@ -198,6 +217,7 @@ const handleBuyMovieTickets = (e) => {
       console.error("Error fetching movie details:", error);
     });
 };
+
 
 
 // Function to handle deleting a movie
