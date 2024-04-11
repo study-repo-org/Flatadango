@@ -2,7 +2,6 @@
 const movieUrl = "https://flatadango.onrender.com/films";
 const ticketUrl = "https://flatadango.onrender.com/tickets";
 
-
 // DOM elements
 const movieContainer = document.getElementById("films");
 const placeholderList = document.querySelector(".film.item");
@@ -38,7 +37,7 @@ const handleTicketFormSubmission = () => {
   formContainer.appendChild(ticketForm);
 
   ticketForm.addEventListener("submit", (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const filmId = document.getElementById("filmId").value;
     const numberOfTickets = document.getElementById("numberOfTickets").value;
     const data = {
