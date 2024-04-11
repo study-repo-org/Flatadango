@@ -83,9 +83,7 @@ const displayMovies= () => {
      const movieListItems = movies.map((movie) => createMovieListItem(movie)) .join("");
      movieContainer.innerHTML = movieListItems;
 
-     if (movies.length > 0) {
-       displayMovieDetails(movies[0]);
-     }
+  
    })
    .catch((error) => {
      // error catching if their is
@@ -94,6 +92,23 @@ const displayMovies= () => {
 };
 displayMovies();
 
+
+// Function to display details of the first movie
+const displayFirstMovieDetails = () => {
+  fetchMovies()
+    .then((movies) => {
+      if (movies.length > 0) {
+        displayMovieDetails(movies[0]);
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching movies:", error);
+    });
+};
+
+
+// Call the function to display the details of the first movie
+displayFirstMovieDetails();
 
 
 // Function to fetch movie details and display them
