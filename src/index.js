@@ -1,6 +1,7 @@
 // API URLs
-const movieUrl = "https://flatadango.onrender.com/films";
-const ticketUrl = "https://flatadango.onrender.com/tickets";
+const movieUrl = " http://localhost:3000/films";
+const ticketUrl = " http://localhost:3000/tickets";
+
 
 // DOM elements
 const movieContainer = document.getElementById("films");
@@ -37,7 +38,7 @@ const handleTicketFormSubmission = () => {
   formContainer.appendChild(ticketForm);
 
   ticketForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const filmId = document.getElementById("filmId").value;
     const numberOfTickets = document.getElementById("numberOfTickets").value;
     const data = {
@@ -174,13 +175,18 @@ const handleBuyMovieTickets = (e) => {
           },
           body: JSON.stringify({ tickets_sold: updatedTicketsSold }),
         })
-        .then((updatedMovie) => {
-          console.log(updatedMovie);
-          // Update the DOM and display movie details
-          displayMovieDetails(updatedMovie);
+        .then(() => {
+          // Fetch updated movie details
+          fetch(`${movieUrl}/${getMovie.id}`)
+            .then(response => response.json())
+            .then(updatedMovie => {
+              // Update the DOM and display movie details
+              displayMovieDetails(updatedMovie);
+            })
+            .catch(error => console.error("Error fetching updated movie details:", error));
         })
         .catch((error) => {
-            console.error(error);
+          console.error("Error updating movie details:", error);
         });
       } else {
         console.error("Movie not found");
@@ -192,14 +198,17 @@ const handleBuyMovieTickets = (e) => {
     });
 };
 
-
 // Function to handle deleting a movie
 const handleDeleteMovie = (id) => {
-    fetch(`${movieUrl}/${id}`, {
-      method: "DELETE",
-    });
- 
-}  
+  fetch(`${movieUrl}/${id}`, {
+    method: "DELETE",
+  })
+  .then(() => {
+    // Refresh the movie list after deletion
+    displayMovies();
+  })
+  .catch(error => console.error("Error deleting movie:", error));
+};
 
 
 document.addEventListener("DOMContentLoaded", () => { displayMovies();});

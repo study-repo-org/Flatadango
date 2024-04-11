@@ -6,7 +6,7 @@
       "runtime": "108",
       "capacity": 30,
       "showtime": "04:00PM",
-      "tickets_sold": 29,
+      "tickets_sold": 30,
       "description": "A giant lizard terrorizes a rural Texas community and a heroic teenager attempts to destroy the creature.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/2157/p2157_v_v8_ab.jpg"
     },
@@ -137,26 +137,10 @@
       "runtime": "111",
       "capacity": 50,
       "showtime": "08:00PM",
-      "tickets_sold": 40,
+      "tickets_sold": 42,
       "description": "International man of mystery Diabolik and his lover pull off heist after heist, all while European cops led by Inspector Ginko and envious mobsters led by Ralph Valmont are closing in on them.",
       "poster": "https://www.gstatic.com/tv/thumb/v22vodart/11850/p11850_v_v8_aa.jpg"
-    },
-    {
-      "id": "15",
-      "title": "Village Of The Giants",
-      "runtime": "98",
-      "capacity": 50,
-      "showtime": "04:45PM",
-      "tickets_sold": 33,
-      "description": "Delinquent teen-agers ingest a substance and grow thirty feet tall, then proceed to take over a small town.",
-      "poster": "https://www.gstatic.com/tv/thumb/v22vodart/37991/p37991_v_v8_aa.jpg"
     }
   ],
-  "tickets": [
-    {
-      "id": "185f",
-      "filmId": "878",
-      "numberOfTickets": "5654"
-    }
-  ]
+  "tickets": []
 }
