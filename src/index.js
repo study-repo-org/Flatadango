@@ -62,7 +62,6 @@ handleTicketFormSubmission();
 
 
   
-  
 
 // Function to create list item for each movie
 const createMovieListItem = (movie) => {
@@ -93,6 +92,7 @@ const displayMovies= () => {
 displayMovies();
 
 
+
 // Function to display details of the first movie
 const displayFirstMovieDetails = () => {
   fetchMovies()
@@ -107,8 +107,7 @@ const displayFirstMovieDetails = () => {
 };
 
 
-// Call the function to display the details of the first movie
-displayFirstMovieDetails();
+;
 
 
 // Function to fetch movie details and display them
@@ -154,8 +153,8 @@ const handleMovieItemClick = (event) => {
 };
 
 
-// Function to handle buying movie tickets
-// Function to handle buying movie tickets
+
+
 // Function to fetch movie details by ID
 const fetchMovieById = (movieId) => {
   return fetch(`${movieUrl}/${movieId}`)
@@ -164,6 +163,8 @@ const fetchMovieById = (movieId) => {
       console.error(`Error fetching movie with ID ${movieId}:`, error);
     });
 };
+
+
 
 // Function to handle buying movie tickets
 const handleBuyMovieTickets = (e) => {
@@ -248,6 +249,9 @@ const handleDeleteMovie = (id) => {
 };
 
 
-document.addEventListener("DOMContentLoaded", () => { displayMovies();});
+document.addEventListener("DOMContentLoaded", () => { 
+  displayMovies();
+  displayFirstMovieDetails()
+});
 movieContainer.addEventListener("click", handleMovieItemClick);
 buyMovieTickets.addEventListener("click", handleBuyMovieTickets);
