@@ -12,7 +12,6 @@ const formContainer = document.getElementById("tecket-form");
 
 
 // Function to fetch movies from the API
-// Function to fetch movies from the API
 const fetchMovies = () => {
   return fetch(movieUrl)
     .then((res) => res.json())
@@ -176,14 +175,8 @@ const handleBuyMovieTickets = (e) => {
           body: JSON.stringify({ tickets_sold: updatedTicketsSold }),
         })
         .then(() => {
-          // Fetch updated movie details
-          fetch(`${movieUrl}/${getMovie.id}`)
-            .then(response => response.json())
-            .then(updatedMovie => {
-              // Update the DOM and display movie details
-              displayMovieDetails(updatedMovie);
-            })
-            .catch(error => console.error("Error fetching updated movie details:", error));
+          // Call displayMovieDetails with updated movie ID
+          displayMovieDetails(getMovie.id);
         })
         .catch((error) => {
           console.error("Error updating movie details:", error);
@@ -197,6 +190,7 @@ const handleBuyMovieTickets = (e) => {
       console.error("Error fetching movie details:", error);
     });
 };
+
 
 // Function to handle deleting a movie
 const handleDeleteMovie = (id) => {
