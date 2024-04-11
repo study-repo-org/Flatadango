@@ -1,5 +1,5 @@
 // API URLs
-const movieUrl = "http://localhost:3000/films";
+const movieUrl = "https://flatadango.onrender.com/films";
 const ticketUrl = "https://flatadango.onrender.com/tickets";
 
 
