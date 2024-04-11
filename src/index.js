@@ -140,6 +140,7 @@ const handleMovieItemClick = (event) => {
 
 
 // Function to handle buying movie tickets
+// Function to handle buying movie tickets
 const handleBuyMovieTickets = (e) => {
   e.preventDefault();
   const movieTitleElement = document.getElementById("title");
@@ -175,8 +176,15 @@ const handleBuyMovieTickets = (e) => {
           body: JSON.stringify({ tickets_sold: updatedTicketsSold }),
         })
         .then(() => {
-          // Call displayMovieDetails with updated movie ID
-          displayMovieDetails(getMovie.id);
+          // Update the displayed ticket count without reloading the entire movie details
+          const availableTicketsElement = document.getElementById("ticket-num");
+          const availableTickets = getMovie.capacity - updatedTicketsSold;
+          availableTicketsElement.textContent = availableTickets;
+          
+          // Update the buy button text if tickets are sold out
+          if (availableTickets === 0) {
+            buyMovieTickets.textContent = "Sold Out";
+          }
         })
         .catch((error) => {
           console.error("Error updating movie details:", error);
